@@ -6,6 +6,11 @@ Integer >> D10 [
 ]
 
 { #category : #'*DiceRoller' }
+Integer >> D30 [
+	^ 1 D: 30
+]
+
+{ #category : #'*DiceRoller' }
 Integer >> D4 [
 	^self D: 4.
 ]
@@ -23,7 +28,7 @@ Integer >> D8 [
 { #category : #'*DiceRoller' }
 Integer >> D: sides [
 	| handle |
-	handle := DieHandle new.
+	handle := Dice new.
 	self timesRepeat: [handle addDie: (Die withSides: sides)].
 	^handle.
 ]

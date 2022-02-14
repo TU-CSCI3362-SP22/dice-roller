@@ -1,5 +1,5 @@
 Class {
-	#name : #DieHandle,
+	#name : #Dice,
 	#superclass : #Object,
 	#instVars : [
 		'dice'
@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #accessing }
-DieHandle >> + anotherHandle [
+Dice >> + anotherHandle [
 	| handle |
 	handle := self class new.
 	dice do: [ :each | handle addDie: each ].
@@ -17,30 +17,30 @@ DieHandle >> + anotherHandle [
 ]
 
 { #category : #initialization }
-DieHandle >> addDie: aDie [
+Dice >> addDie: aDie [
 	dice add: aDie.
 ]
 
 { #category : #accessing }
-DieHandle >> dice [
+Dice >> dice [
 
 	^ dice
 ]
 
 { #category : #accessing }
-DieHandle >> dice: anObject [
+Dice >> dice: anObject [
 
 	dice := anObject
 ]
 
 { #category : #initialization }
-DieHandle >> initialize [ 
+Dice >> initialize [ 
 	super initialize .
 	dice := OrderedCollection new.
 ]
 
 { #category : #initialization }
-DieHandle >> roll [
+Dice >> roll [
 	| x |
 	x := 0.
 	dice do: [ :each | x := x + each roll ].
