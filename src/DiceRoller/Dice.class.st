@@ -11,13 +11,16 @@ Class {
 Dice >> + anotherHandle [
 	| handle |
 	handle := self class new.
-	dice do: [ :each | handle addDie: each ].
-	anotherHandle dice do:  [ :each | handle addDie: each ].
+	dice do: [ :each | handle add: each ].
+	anotherHandle class = self class ifTrue: [ 
+			anotherHandle dice do:  [ :each | handle add: each ].
+			].
+	anotherHandle class = Die ifTrue: [ handle add: anotherHandle ].
 	^ handle.
 ]
 
 { #category : #initialization }
-Dice >> addDie: aDie [
+Dice >> add: aDie [
 	dice add: aDie.
 ]
 
@@ -39,10 +42,14 @@ Dice >> initialize [
 	dice := OrderedCollection new.
 ]
 
+{ #category : #mechanics }
+Dice >> maxValue [
+	dice isEmpty ifTrue: [ ^0 ].
+	^ (dice collect: [ :each | each maxValue]) sum.
+]
+
 { #category : #initialization }
 Dice >> roll [
-	| x |
-	x := 0.
-	dice do: [ :each | x := x + each roll ].
-	^x.
+	dice isEmpty ifTrue: [ ^0 ].
+	^ (dice collect: [ :each | each roll ]) sum.
 ]

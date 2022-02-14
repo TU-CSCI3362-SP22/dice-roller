@@ -29,6 +29,6 @@ Integer >> D8 [
 Integer >> D: sides [
 	| handle |
 	handle := Dice new.
-	self timesRepeat: [handle addDie: (Die withSides: sides)].
+	self timesRepeat: [handle add: (Die withSides: sides)].
 	^handle.
 ]

@@ -16,6 +16,16 @@ DieTests >> testBigDie [
 ]
 
 { #category : #tests }
+DieTests >> testDice [
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"	
+			
+	| dh |
+	dh := 1 D4 + 2 D8.
+	self assert: dh maxValue equals: 20.
+]
+
+{ #category : #tests }
 DieTests >> testDieCreation [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
